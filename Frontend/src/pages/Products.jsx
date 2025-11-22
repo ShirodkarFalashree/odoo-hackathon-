@@ -1,9 +1,92 @@
-import React from 'react'
+import React, { useState } from "react";
+import { Eye, Plus } from "lucide-react";
 
 const Products = () => {
-  return (
-    <div>Products</div>
-  )
-}
+  // Dummy product data
+  const products = [
+    { name: "Laptop Pro", sku: "SKU-001", stock: 45, unit: "pcs" },
+    { name: "Wireless Mouse", sku: "SKU-002", stock: 120, unit: "pcs" },
+    { name: "USB-C Cable", sku: "SKU-003", stock: 8, unit: "pcs" },
+    { name: 'Monitor 27"', sku: "SKU-004", stock: 32, unit: "pcs" },
+  ];
 
-export default Products
+  // Search state
+  const [search, setSearch] = useState("");
+
+  // Filter products based on search text
+  const filteredProducts = products.filter((item) =>
+    item.name.toLowerCase().includes(search.toLowerCase()) ||
+    item.sku.toLowerCase().includes(search.toLowerCase())
+  );
+
+  return (
+    <div className="text-white w-full">
+      {/* Page header */}
+      <div className="flex items-center justify-between mb-8">
+        <div>
+          <h1 className="text-3xl font-bold">Products</h1>
+          <p className="text-gray-400 mt-1">Manage your inventory items</p>
+        </div>
+
+        <button className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg font-medium">
+          <Plus size={18} /> Add Product
+        </button>
+      </div>
+
+      {/* Search bar */}
+      <input
+        placeholder="Search products by name or SKU..."
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        className="w-full bg-[#1c1c1c] border border-gray-700 rounded-lg px-4 py-3 mb-6 text-gray-300 placeholder-gray-500 focus:outline-none "
+      />
+
+      {/* Table */}
+      <div className="bg-[#1a1a1a] rounded-xl border border-gray-800 overflow-hidden">
+        <table className="w-full text-left">
+          <thead className="bg-[#222] text-gray-300 border-b border-gray-700">
+            <tr>
+              <th className="py-4 px-6 font-semibold">Product Name</th>
+              <th className="py-4 px-6 font-semibold">SKU</th>
+              <th className="py-4 px-6 font-semibold">Stock</th>
+              <th className="py-4 px-6 font-semibold">Unit</th>
+              <th className="py-4 px-6 font-semibold">Action</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {filteredProducts.length > 0 ? (
+              filteredProducts.map((item, index) => (
+                <tr
+                  key={index}
+                  className="border-b border-gray-800 hover:bg-[#262626] transition"
+                >
+                  <td className="py-4 px-6">{item.name}</td>
+                  <td className="py-4 px-6 text-gray-300">{item.sku}</td>
+                  <td className="py-4 px-6">{item.stock}</td>
+                  <td className="py-4 px-6">{item.unit}</td>
+                  <td className="py-4 px-6">
+                    <button className="flex items-center gap-2 text-blue-400 hover:text-blue-500">
+                      <Eye size={18} /> View
+                    </button>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td
+                  colSpan="5"
+                  className="py-6 text-center text-gray-500 italic"
+                >
+                  No matching products found.
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+};
+
+export default Products;
