@@ -1,6 +1,6 @@
 import React from "react";
 import { Package, ClipboardCheck, Truck, AlertTriangle } from "lucide-react";
-
+import {BarChart} from "../components/Barchart.jsx"
 const Dashboard = () => {
   return (
     <div className="w-full text-white">
@@ -69,16 +69,17 @@ const Dashboard = () => {
         <div className="bg-[#111111] p-6 rounded-xl border border-gray-800 shadow xl:col-span-2">
           <h2 className="text-xl font-semibold mb-4">Items In & Out</h2>
 
-          <div className="h-64 bg-[#17181C] rounded-lg flex items-center justify-center text-gray-500">
-            (Chart Placeholder)
-          </div>
+          <div className="h-64 bg-[#17181C] rounded-lg p-3  flex justify-center">
+  <BarChart />
+</div>
+
         </div>
 
         
         <div className="bg-[#111111]  p-6 rounded-xl border border-gray-800 shadow">
           <h2 className="text-xl font-semibold mb-4">What are you looking for?</h2>
           <div className="h-64 bg-[#17181C] rounded-lg flex items-center justify-center text-gray-500">
-            (Image / Insights)
+            <img src="https://wallpaperaccess.com/full/2309072.jpg" alt="" className="bg-cov" />
           </div>
         </div>
 
