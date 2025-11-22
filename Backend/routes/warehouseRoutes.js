@@ -1,7 +1,13 @@
 import express from "express";
-const router = express.Router();
-import { getWarehouse, updateWarehouse } from "../controllers/warehouseController.js";
+import {
+  createWarehouse,
+  getWarehouse,
+  updateWarehouse
+} from "../controllers/warehouseController.js";
 
+const router = express.Router();
+
+router.post("/", createWarehouse);   // Add this
 router.get("/", getWarehouse);
 router.put("/", updateWarehouse);
 
