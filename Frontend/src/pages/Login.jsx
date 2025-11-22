@@ -33,19 +33,19 @@ const Login = () => {
           placeholder="Login ID"
           value={login_id}
           onChange={(e) => setLoginId(e.target.value)}
-          className="w-full mb-3 p-2 bg-[#111] rounded border border-gray-700"
+          className="w-full mb-3 p-2 bg-[#111] rounded border border-gray-700 outline-0"
         />
         <input
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="w-full mb-4 p-2 bg-[#111] rounded border border-gray-700"
+          className="w-full mb-4 p-2 bg-[#111] rounded border border-gray-700 outline-0"
         />
 
         <button
           onClick={handleLogin}
-          className="w-full bg-blue-600 py-2 rounded hover:bg-blue-700 transition"
+          className="w-full bg-blue-600 py-2 rounded hover:bg-blue-700 transition outline-0"
         >
           Login
         </button>
