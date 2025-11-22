@@ -27,7 +27,7 @@ import Footer from "./components/Footer";
 
 const Layout = () => {
   return (
-    <div className="flex  min-h-screen">
+    <div className="flex bg-[#17181C] text-white min-h-screen">
 
       {/* Sidebar */}
       <Sidebar />

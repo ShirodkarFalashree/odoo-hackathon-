@@ -4,10 +4,10 @@ import { LayoutDashboard, Package, ClipboardList, Truck } from "lucide-react";
 
 const Sidebar = () => {
   return (
-    <aside className="w-64  bg-[#6a2658] border-r border-gray-800 p-6 flex flex-col">
+    <aside className="w-64  bg-[#111111] border-r  border-gray-800 p-6 flex flex-col">
       
       {/* Logo */}
-      <h1 className="text-2xl font-bold mb-10 tracking-wider">IMS</h1>
+      <h1 className="text-2xl font-bold mb-10 tracking-wider">StockMaster</h1>
 
       {/* Menu Links */}
       <nav className="flex flex-col gap-4 text-gray-300">
@@ -16,8 +16,8 @@ const Sidebar = () => {
           to="/"
           end
           className={({ isActive }) =>
-            `flex items-center gap-3 px-3 py-2 rounded-lg transition-all hover:bg-[#4a193d] ${
-              isActive ? "bg-[#6a2658] text-white" : "text-gray-300"
+            `flex items-center gap-3 px-3 py-2 rounded-lg transition-all hover:bg-[#17181C] ${
+              isActive ? " text-white" : "text-gray-300"
             }`
           }
         >
@@ -28,7 +28,7 @@ const Sidebar = () => {
         <NavLink
           to="/products"
           className={({ isActive }) =>
-            `flex items-center gap-3 px-3 py-2 rounded-lg transition-all hover:bg-[#4a193d] ${
+            `flex items-center gap-3 px-3 py-2 rounded-lg transition-all hover:bg-[#17181C] ${
               isActive ? "bg-gray-800 text-white" : "text-gray-300"
             }`
           }
@@ -40,7 +40,7 @@ const Sidebar = () => {
         <NavLink
           to="/receipts"
           className={({ isActive }) =>
-            `flex items-center gap-3 px-3 py-2 rounded-lg transition-all hover:bg-[#4a193d] ${
+            `flex items-center gap-3 px-3 py-2 rounded-lg transition-all hover:bg-[#17181C] ${
               isActive ? "bg-gray-800 text-white" : "text-gray-300"
             }`
           }
@@ -52,7 +52,7 @@ const Sidebar = () => {
         <NavLink
           to="/deliveries"
           className={({ isActive }) =>
-            `flex items-center gap-3 px-3 py-2 rounded-lg transition-all hover:bg-[#4a193d] ${
+            `flex items-center gap-3 px-3 py-2 rounded-lg transition-all hover:bg-[#17181C] ${
               isActive ? "bg-gray-800 text-white" : "text-gray-300"
             }`
           }
