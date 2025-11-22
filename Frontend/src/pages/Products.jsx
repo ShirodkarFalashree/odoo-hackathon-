@@ -2,21 +2,26 @@ import React, { useState } from "react";
 import { Eye, Plus } from "lucide-react";
 
 const Products = () => {
-  // Dummy product data
+  // Product list with categories
   const products = [
-    { name: "Laptop Pro", sku: "SKU-001", stock: 45, unit: "pcs" },
-    { name: "Wireless Mouse", sku: "SKU-002", stock: 120, unit: "pcs" },
-    { name: "USB-C Cable", sku: "SKU-003", stock: 8, unit: "pcs" },
-    { name: 'Monitor 27"', sku: "SKU-004", stock: 32, unit: "pcs" },
+    { name: "Laptop Pro", sku: "SKU-001", stock: 45, unit: "pcs", category: "Electronics" },
+    { name: "Wireless Mouse", sku: "SKU-002", stock: 120, unit: "pcs", category: "Accessories" },
+    { name: "USB-C Cable", sku: "SKU-003", stock: 8, unit: "pcs", category: "Accessories" },
+    { name: 'Monitor 27"', sku: "SKU-004", stock: 32, unit: "pcs", category: "Electronics" },
+    { name: "Office Chair", sku: "SKU-005", stock: 15, unit: "pcs", category: "Furniture" },
+    { name: "Standing Desk", sku: "SKU-006", stock: 5, unit: "pcs", category: "Furniture" },
+    { name: "Keyboard Pro", sku: "SKU-007", stock: 67, unit: "pcs", category: "Accessories" },
+    { name: "Webcam HD", sku: "SKU-008", stock: 24, unit: "pcs", category: "Electronics" },
   ];
 
   // Search state
   const [search, setSearch] = useState("");
 
-  // Filter products based on search text
+  // Filter logic (name + SKU + category)
   const filteredProducts = products.filter((item) =>
     item.name.toLowerCase().includes(search.toLowerCase()) ||
-    item.sku.toLowerCase().includes(search.toLowerCase())
+    item.sku.toLowerCase().includes(search.toLowerCase()) ||
+    item.category.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
@@ -35,10 +40,10 @@ const Products = () => {
 
       {/* Search bar */}
       <input
-        placeholder="Search products by name or SKU..."
+        placeholder="Search by name, SKU, or category..."
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        className="w-full bg-[#1c1c1c] border border-gray-700 rounded-lg px-4 py-3 mb-6 text-gray-300 placeholder-gray-500 focus:outline-none "
+        className="w-full bg-[#1c1c1c] border border-gray-700 rounded-lg px-4 py-3 mb-6 text-gray-300 placeholder-gray-500 focus:outline-none"
       />
 
       {/* Table */}
@@ -48,6 +53,7 @@ const Products = () => {
             <tr>
               <th className="py-4 px-6 font-semibold">Product Name</th>
               <th className="py-4 px-6 font-semibold">SKU</th>
+              <th className="py-4 px-6 font-semibold">Category</th>
               <th className="py-4 px-6 font-semibold">Stock</th>
               <th className="py-4 px-6 font-semibold">Unit</th>
               <th className="py-4 px-6 font-semibold">Action</th>
@@ -62,9 +68,18 @@ const Products = () => {
                   className="border-b border-gray-800 hover:bg-[#262626] transition"
                 >
                   <td className="py-4 px-6">{item.name}</td>
-                  <td className="py-4 px-6 text-gray-300">{item.sku}</td>
+                  <td className="py-4 px-6">{item.sku}</td>
+
+                  {/* Category Badge */}
+                  <td className="py-4 px-6">
+                    <span className="px-3 py-1 rounded-full bg-blue-900/30 text-blue-300 border border-blue-700 text-sm">
+                      {item.category}
+                    </span>
+                  </td>
+
                   <td className="py-4 px-6">{item.stock}</td>
                   <td className="py-4 px-6">{item.unit}</td>
+
                   <td className="py-4 px-6">
                     <button className="flex items-center gap-2 text-blue-400 hover:text-blue-500">
                       <Eye size={18} /> View
@@ -75,7 +90,7 @@ const Products = () => {
             ) : (
               <tr>
                 <td
-                  colSpan="5"
+                  colSpan="6"
                   className="py-6 text-center text-gray-500 italic"
                 >
                   No matching products found.

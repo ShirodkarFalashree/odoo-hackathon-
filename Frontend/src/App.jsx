@@ -27,13 +27,13 @@ import Footer from "./components/Footer";
 
 const Layout = () => {
   return (
-    <div className="flex bg-[#17181C] text-white min-h-screen">
+    <div className="flex  min-h-screen">
 
       {/* Sidebar */}
       <Sidebar />
 
       {/* MAIN CONTENT COLUMN */}
-      <div className="flex flex-col flex-1 bg-[#17181C]">
+      <div className="flex flex-col flex-1 ">
 
         {/* Page Content */}
         <main className="flex-1 p-6 overflow-y-auto">
