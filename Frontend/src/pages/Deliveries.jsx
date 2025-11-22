@@ -62,7 +62,7 @@ const Deliveries = () => {
 
         <button
           onClick={() => setShowModal(true)}
-          className="flex items-center gap-2 cursor-pointer bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg font-medium"
+          className="flex items-center gap-2 cursor-pointer bg-[#1a1a1a1a] hover:bg-[#111111] px-4 py-2 rounded-lg font-medium"
         >
           <Plus size={18} /> Create Delivery
         </button>
