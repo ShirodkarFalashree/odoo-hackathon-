@@ -14,6 +14,9 @@ const Products = () => {
     { name: "Webcam HD", sku: "SKU-008", stock: 24, unit: "pcs", category: "Electronics" },
   ];
 
+  // Modal state
+  const [showModal, setShowModal] = useState(false);
+
   // Search state
   const [search, setSearch] = useState("");
 
@@ -33,7 +36,10 @@ const Products = () => {
           <p className="text-gray-400 mt-1">Manage your inventory items</p>
         </div>
 
-        <button className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg font-medium">
+        <button
+          onClick={() => setShowModal(true)}
+          className="flex items-center gap-2 cursor-pointer bg-[#111111] hover:bg-[#1a1a1a] px-4 py-2 rounded-lg font-medium"
+        >
           <Plus size={18} /> Add Product
         </button>
       </div>
@@ -100,6 +106,89 @@ const Products = () => {
           </tbody>
         </table>
       </div>
+
+      {/* ADD PRODUCT MODAL */}
+      {showModal && (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50">
+          <div className="bg-[#1a1a1a] w-full max-w-xl p-6 rounded-xl border border-gray-700 shadow-xl">
+
+            <h2 className="text-2xl font-semibold mb-4">Add New Product</h2>
+
+            {/* Form Fields */}
+            <div className="flex flex-col gap-4">
+
+              <div>
+                <label className="block text-gray-300 mb-1">Product Name</label>
+                <input
+                  type="text"
+                  className="w-full bg-[#111] border border-gray-700 rounded-lg px-3 py-2 text-gray-300 focus:outline-none"
+                  placeholder="Enter product name"
+                />
+              </div>
+
+              <div>
+                <label className="block text-gray-300 mb-1">SKU</label>
+                <input
+                  type="text"
+                  className="w-full bg-[#111] border border-gray-700 rounded-lg px-3 py-2 text-gray-300 focus:outline-none"
+                  placeholder="e.g., SKU-001"
+                />
+              </div>
+
+              {/* CATEGORY */}
+              <div>
+                <label className="block text-gray-300 mb-1">Category</label>
+                <select className="w-full bg-[#111] border border-gray-700 rounded-lg px-3 py-2 text-gray-300">
+                  <option>Electronics</option>
+                  <option>Accessories</option>
+                  <option>Furniture</option>
+                  <option>Others</option>
+                </select>
+              </div>
+
+              {/* FLEX ROW */}
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-gray-300 mb-1">Unit</label>
+                  <select className="w-full bg-[#111] border border-gray-700 rounded-lg px-3 py-2 text-gray-300">
+                    <option>Pieces (pcs)</option>
+                    <option>Kilograms (kg)</option>
+                    <option>Boxes</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-gray-300 mb-1">Initial Stock</label>
+                  <input
+                    type="number"
+                    className="w-full bg-[#111] border border-gray-700 rounded-lg px-3 py-2 text-gray-300"
+                    defaultValue={0}
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* BUTTONS */}
+            <div className="flex justify-end gap-3 mt-6">
+              <button
+                onClick={() => setShowModal(false)}
+                className="px-4 py-2 rounded-lg border border-gray-600 text-gray-300 hover:bg-gray-700"
+              >
+                Cancel
+              </button>
+
+              <button
+                onClick={() => setShowModal(false)} // Replace with save logic later
+                className="px-4 py-2 rounded-lg bg-[#111111] hover:[#1a1a1a] text-white"
+              >
+                Save Product
+              </button>
+            </div>
+
+          </div>
+        </div>
+      )}
+
     </div>
   );
 };
